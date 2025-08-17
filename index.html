@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pendaftaran Lomba 17 Agustus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <img src="/img/logo.png" alt="Logo 17 Agustus" class="logo">
+        <h1>Pendaftaran Lomba</h1>
+        <p>Ayo meriahkan Hari Kemerdekaan dengan mengikuti berbagai lomba seru!</p>
+
+        <form id="registrationForm"> 
+            <div class="form-group">
+                <label for="nama">Nama Lengkap</label>
+                <input type="text" id="nama" name="nama" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="usia">Usia</label>
+                <input type="number" id="usia" name="usia" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <textarea id="alamat" name="alamat" rows="3" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="lomba">Pilih Lomba</label>
+                <select id="lomba" name="lomba" required>
+                    <option value="">-- Pilih salah satu --</option>
+                    <option value="balap-karung">Balap Karung</option>
+                    <option value="makan-kerupuk">Makan Kerupuk</option>
+                    <option value="tarik-tambang">Tarik Tambang</option>
+                    <option value="panjat-pinang">Panjat Pinang</option>
+                    <option value="futsal-daster">Futsal Daster</option>
+                </select>
+            </div>
+            
+            <button type="submit" class="btn">Daftar Sekarang</button>
+        </form>
+        
+        <div class="footer">
+            &copy; 2025 Panitia Lomba | Made with 💖 in Indonesia
+        </div>
+    </div>
+
+    <div id="modalOverlay">
+        <div id="thankYouModal">
+            <h2>Pendaftaran Berhasil!</h2>
+            <p>Terima kasih, data Anda sudah terdaftar.</p>
+            <p>Silakan datang tepat waktu untuk mengikuti perlombaan:</p>
+            <h3>Waktu: 17 Agustus <p id="yearsNow"></p>, Pukul 09:00 WIB</h3>
+            <button id="closeModalBtn">Tutup</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
