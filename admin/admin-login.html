@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Admin Panel</title>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="admin-style.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <img src="../img/logo.png" alt="Logo Lomba" class="logo" />
+      <h2>Admin Panel</h2>
+      <form id="loginForm">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit" class="btn">Login</button>
+      </form>
+      <p id="error-message"></p>
+    </div>
+    <script>
+      const form = document.getElementById("loginForm");
+      const errorMessage = document.getElementById("error-message");
+      const ADMIN_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbxqC9qYq4aVAPTOJT5NuI8D_m8sfAfYh0AGHBpPyG8bjldhUT2FTQAzy7PlEayaWkCJLg/exec"; // <-- Akan diisi nanti
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const password = document.getElementById("password").value;
+        const response = await fetch(ADMIN_SCRIPT_URL, {
+          method: "POST",
+          body: JSON.stringify({ action: "login", password: password }),
+          headers: { "Content-Type": "application/json" },
+        });
+        const data = await response.json();
+        if (data.success) {
+          localStorage.setItem("loggedIn", "true");
+          window.location.href = "admin-dashboard.html";
+        } else {
+          errorMessage.textContent = "Password salah. Coba lagi.";
+        }
+      });
+    </script>
+  </body>
+</html>

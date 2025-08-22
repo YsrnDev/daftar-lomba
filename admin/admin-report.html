@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laporan Pendaftar</title>
+    <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="admin-style.css" />
+  </head>
+  <body>
+    <div class="admin-container">
+      <h2>Laporan Pendaftar Lengkap</h2>
+      <div id="report-table-container"></div>
+      <br />
+      <button onclick="window.print()" class="btn">
+        Cetak / Simpan sebagai PDF
+      </button>
+      <a href="admin-dashboard.html" class="btn">Kembali ke Dashboard</a>
+    </div>
+    <script>
+      if (!localStorage.getItem("loggedIn")) {
+        window.location.href = "admin-login.html";
+      }
+
+      const ADMIN_SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbxqC9qYq4aVAPTOJT5NuI8D_m8sfAfYh0AGHBpPyG8bjldhUT2FTQAzy7PlEayaWkCJLg/exec"; // <-- Akan diisi nanti
+      const tableContainer = document.getElementById("report-table-container");
+
+      async function fetchReportData() {
+        const response = await fetch(`${ADMIN_SCRIPT_URL}?action=getReport`);
+        const data = await response.json();
+
+        let html = "<table><thead><tr>";
+        data.headers.forEach((header) => (html += `<th>${header}</th>`));
+        html += "</tr></thead><tbody>";
+
+        data.data.forEach((row) => {
+          html += "<tr>";
+          row.forEach((cell) => (html += `<td>${cell}</td>`));
+          html += "</tr>";
+        });
+
+        html += "</tbody></table>";
+        tableContainer.innerHTML = html;
+      }
+      fetchReportData();
+    </script>
+  </body>
+</html>

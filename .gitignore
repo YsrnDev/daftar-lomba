@@ -3,10 +3,6 @@
 Thumbs.db
 .vscode/
 
-
-# Log files
-*.log
-
 # Temporary or private files
 /webhook.php
 

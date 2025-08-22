@@ -1,0 +1,69 @@
+.login-container,
+.admin-container {
+  background-color: white;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 350px;
+  margin: 50px auto;
+}
+
+.login-container {
+  width: 300px;
+}
+
+.admin-container {
+  width: 90%;
+  max-width: 800px;
+}
+
+.logo {
+  width: 100px;
+  margin-bottom: 20px;
+}
+
+.dashboard-card {
+  background-color: #f8f9fa;
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #e9ecef;
+}
+
+.dashboard-card h3 {
+  margin-top: 0;
+}
+
+#total-pendaftar {
+  font-size: 2.5em;
+  color: #007bff;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  border: 1px solid #dee2e6;
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  background-color: #e9ecef;
+}
+
+@media print {
+  .btn,
+  a.btn {
+    display: none;
+  }
+  body {
+    background-color: white;
+  }
+}
